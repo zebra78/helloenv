@@ -7,14 +7,14 @@ pipeline {
     }
  
     parameters { 
-      string(name: 'version', defaultValue: 'r19.5.1', description: 'release version')
-      string(name: 'env', defaultValue: 'tst', description: 'deploy env')
+        string defaultValue: 'r19.5.1', description: 'r19.5.1', name: 'version', trim: false
+        string defaultValue: 'pre', description: 'env', name: 'env', trim: false
     }
  
     stages {
         stage('Clone support repos') {
             steps {
-                dir('${version}') {
+                dir("${version}") {
                     git branch: '${version}', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/helloapp.git'
                 }
                 dir('cfm') {
