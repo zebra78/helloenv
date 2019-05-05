@@ -8,7 +8,6 @@ pipeline {
  
     parameters { 
         string defaultValue: 'r19.5.1', description: 'r19.5.1', name: 'version', trim: false
-        string defaultValue: 'prd', description: 'env', name: 'env', trim: false
     }
  
     stages {
@@ -25,7 +24,7 @@ pipeline {
  
         stage('Run ansible playbook') {
             steps {
-              ansiblePlaybook disableHostKeyChecking: true, extras: '-e "version=${version} env=${env}"', inventory: 'cfm/hosts', playbook: 'cfm/webdeployer.yml'
+              ansiblePlaybook disableHostKeyChecking: true, extras: '-e "version=${version}"', inventory: 'cfm/hosts', playbook: 'cfm/webdeployer.yml'
             }
         }
     }
