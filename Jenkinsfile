@@ -3,6 +3,7 @@ pipeline {
     agent any
  
     options {
+        skipStagesAfterUnstable()
         buildDiscarder(logRotator(numToKeepStr: '3', daysToKeepStr: '3'))
     }
  
