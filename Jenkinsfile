@@ -7,7 +7,7 @@ pipeline {
     }
  
     parameters { 
-        string defaultValue: 'r19.5.1', description: 'r19.5.1', name: 'version', trim: false
+        string defaultValue: 'master', description: 'master', name: 'version', trim: false
     }
  
     stages {
@@ -17,7 +17,7 @@ pipeline {
                     git branch: '${version}', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/helloapp.git'
                 }
                 dir('cfm') {
-                    git branch: 'master', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/hellocfm.git'
+                    git branch: '${version}', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/hellocfm.git'
                 }
             }
         }
