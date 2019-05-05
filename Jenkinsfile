@@ -15,10 +15,10 @@ pipeline {
         stage('Clone support repos') {
             steps {
                 dir("${version}") {
-                    git branch: '${version}', url: 'git@github.com:zebra78/helloapp.git'
+                    git branch: '${version}', url: 'https://github.com/zebra78/helloapp.git'
                 }
                 dir('cfm') {
-                    git branch: 'master', url: 'git@github.com:zebra78/hellocfm.git'
+                    git branch: 'master', url: 'https://github.com/zebra78/hellocfm.git'
                 }
             }
         }
