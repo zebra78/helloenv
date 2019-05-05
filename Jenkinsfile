@@ -15,10 +15,10 @@ pipeline {
         stage('Clone support repos') {
             steps {
                 dir("${version}") {
-                    git branch: '${version}', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/helloapp.git'
+                    git branch: '${version}', url: 'git@github.com:zebra78/helloapp.git'
                 }
                 dir('cfm') {
-                    git branch: 'master', credentialsId: 'jenkins_gitbucket', url: 'ssh://git@192.168.100.100:29418/hello/hellocfm.git'
+                    git branch: 'master', url: 'git@github.com:zebra78/hellocfm.git'
                 }
             }
         }
